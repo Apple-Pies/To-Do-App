@@ -1,12 +1,17 @@
+from .models import Task
+from .forms import CreateUserForm
+from .forms import TaskForm
+
 from django.http import HttpResponse
 from django.shortcuts import redirect
 from django.shortcuts import render
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate
+from django.contrib.auth import login
+from django.contrib.auth import logout
 from django.contrib import messages
+
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import Group
-from .models import *
-from .forms import *
 
 def RegisterUser(request):
 	if request.user.is_authenticated:

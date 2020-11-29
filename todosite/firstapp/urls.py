@@ -2,6 +2,7 @@ from django.urls import path
 from django.contrib.auth import views as auth_views
 from . import views
 
+app_name = 'firstapp'
 urlpatterns = [
     path('register/', views.RegisterUser, name="register"),
 	path('login/', views.LoginUser, name="login"),  
