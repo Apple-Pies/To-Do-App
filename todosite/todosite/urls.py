@@ -19,5 +19,5 @@ from django.contrib import admin
 
 urlpatterns = [
     url('', include(('firstapp.urls', 'reviews'), namespace='firstapp')),
-    path('admin/', admin.site.urls), # <- include(admin.site.urls)
+    url('admin/', include(admin.site.urls)), # <- include(admin.site.urls)
 ]
