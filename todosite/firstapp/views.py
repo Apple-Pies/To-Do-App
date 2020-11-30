@@ -1,6 +1,5 @@
 from .forms import CreateUserForm
 from .forms import TaskForm
-from Task.models import Task
 from django.http import HttpResponse
 from django.shortcuts import redirect
 from django.shortcuts import render
@@ -10,6 +9,7 @@ from django.contrib.auth import logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import Group
+from .models import Task
 
 def RegisterUser(request):
 	if request.user.is_authenticated:
@@ -35,7 +35,7 @@ def LoginUser(request):
 	else:
 		if request.method == 'POST':
 			username = request.POST.get('username')
-			password =request.POST.get('password')
+			password = request.POST.get('password')
 
 			user = authenticate(request, username=username, password=password)
 
