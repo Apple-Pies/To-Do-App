@@ -1,8 +1,6 @@
 from django.db import models
 
 class Task(models.Model):
-
-
 	MyCHOICES = (
 			('Least Important', '✨ Least Important'),
 			('Somewhat Important', '⭐ Somewhat Important'),
