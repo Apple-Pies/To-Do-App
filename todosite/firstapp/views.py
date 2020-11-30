@@ -1,7 +1,6 @@
-from .models import Task
 from .forms import CreateUserForm
 from .forms import TaskForm
-
+from .models import Task
 from django.http import HttpResponse
 from django.shortcuts import redirect
 from django.shortcuts import render
@@ -9,7 +8,6 @@ from django.contrib.auth import authenticate
 from django.contrib.auth import login
 from django.contrib.auth import logout
 from django.contrib import messages
-
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import Group
 
@@ -60,7 +58,7 @@ def Home(request):
 
 @login_required(login_url='login')
 def ToDo(request):
-    tasks = Task.objects.get()
+    tasks = Task.objects.all()
 
 
     form = TaskForm()
@@ -103,7 +101,7 @@ def deleteTask(request, pk):
 
 @login_required(login_url='login')
 def status(request):
-    tasks = Task.objects.get()
+    tasks = Task.objects.all()
 
 
     context = {'tasks':tasks}
@@ -112,7 +110,7 @@ def status(request):
 
 @login_required(login_url='login')
 def delete_all(request):
-    tasks = Task.objects.get()
+    tasks = Task.objects.all()
 
     if request.method == 'POST':
         tasks.delete()
@@ -145,7 +143,7 @@ def Note(request, pk):
 
 @login_required(login_url='login')
 def priority(request):
-    tasks = Task.objects.get()
+    tasks = Task.objects.all()
 
     context = {'tasks':tasks}
 
