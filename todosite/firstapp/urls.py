@@ -1,6 +1,6 @@
 from django.urls import path
+from . import views
 from django.contrib.auth import views as auth_views
-from .apps import app_name
 
 app_name = 'firstapp'
 urlpatterns = [
@@ -12,7 +12,7 @@ urlpatterns = [
     path('update_task/<str:pk>/', views.updateTask, name="update_task"),
     path('delete_task/<str:pk>/', views.deleteTask, name="delete_task"),
     path('status/', views.status, name="status"),
-    path('delete_all/', views.deleteAll, name="delete_all"),
+    path('delete_all/', views.delete_all, name="delete_all"),
     path('about/', views.aboutUs, name="about"),
     path('notes/<str:pk>/', views.Note, name="note"),
     path('priority/', views.priority, name="priority"),
