@@ -59,8 +59,6 @@ def Home(request):
 @login_required(login_url='login')
 def ToDo(request):
     tasks = Task.objects.all()
-
-
     form = TaskForm()
 
     if request.method == 'POST':
@@ -69,13 +67,12 @@ def ToDo(request):
             form.save()
         return redirect('/task')
 
-    context = {'tasks':tasks, 'form':form}
-    return render(request, 'firstapp/task.html', context)
+    
+    return render(request, 'firstapp/task.html', {'tasks':tasks, 'form':form})
 
 @login_required(login_url='login')
 def updateTask(request, pk):
     task = Task.objects.get(id=pk)
-
     form = TaskForm(instance=task)
 
     if request.method == 'POST':
@@ -84,9 +81,7 @@ def updateTask(request, pk):
             form.save()
             return redirect('/task')
 
-    context = {'form':form}
-
-    return render(request, 'firstapp/update_task.html', context)
+    return render(request, 'firstapp/update_task.html', {'form':form})
 
 @login_required(login_url='login')
 def deleteTask(request, pk):
@@ -96,17 +91,13 @@ def deleteTask(request, pk):
         item.delete()
         return redirect('/task')
 
-    context = {'item':item}
-    return render(request, 'firstapp/delete_task.html', context)
+    return render(request, 'firstapp/delete_task.html', {'item':item})
 
 @login_required(login_url='login')
 def status(request):
     tasks = Task.objects.all()
 
-
-    context = {'tasks':tasks}
-
-    return render(request, 'firstapp/status.html', context)
+    return render(request, 'firstapp/status.html', {'tasks':tasks})
 
 @login_required(login_url='login')
 def delete_all(request):
@@ -116,9 +107,8 @@ def delete_all(request):
         tasks.delete()
         return redirect('/task')
 
-    context = {'tasks':tasks}
 
-    return render(request, 'firstapp/delete_all.html', context)
+    return render(request, 'firstapp/delete_all.html', {'tasks':tasks})
 
 @login_required(login_url='login')
 def aboutUs(request):
@@ -137,16 +127,12 @@ def Note(request, pk):
             form.save()
             return redirect('/task')
 
-    context = {'item':item, 'form':form}
-
-    return render(request, 'firstapp/note.html', context)
+    return render(request, 'firstapp/note.html', {'item':item, 'form':form})
 
 @login_required(login_url='login')
 def priority(request):
     tasks = Task.objects.all()
 
-    context = {'tasks':tasks}
-
-    return render(request, 'firstapp/prior.html', context)
+    return render(request, 'firstapp/prior.html', {'tasks':tasks})
 
 
