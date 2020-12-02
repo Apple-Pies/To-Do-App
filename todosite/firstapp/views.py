@@ -11,9 +11,10 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import Group
 from .models import Task
 
+
 def RegisterUser(request):
 	if request.user.is_authenticated:
-		return redirect('/')
+		return redirect('/home')
 	else:
 		form = CreateUserForm()
 		if request.method == 'POST':
@@ -31,7 +32,7 @@ def RegisterUser(request):
 
 def LoginUser(request):
 	if request.user.is_authenticated:
-		return redirect('/')
+		return redirect('/home')
 	else:
 		if request.method == 'POST':
 			username = request.POST.get('username')
@@ -41,12 +42,11 @@ def LoginUser(request):
 
 			if user is not None:
 				login(request, user)
-				return redirect('/')
+				return redirect('/home')
 			else:
 				messages.info(request, 'Your username or your password is incorrect')
 
-		context = {}
-		return render(request, 'firstapp/login.html', context)
+		return render(request, 'firstapp/login.html', {})
 
 def LogoutUser(request):
 	logout(request)

@@ -1,12 +1,13 @@
 from django.db import models
 
 class Task(models.Model):
+
 	MyCHOICES = (
 			('Least Important', '✨ Least Important'),
 			('Somewhat Important', '⭐ Somewhat Important'),
 			('Mandatory', '🌟 Mandatory'),
 			)
-
+			
 	name = models.CharField(max_length=200)
 	note = models.CharField(max_length=800)
 	completion = models.BooleanField(default=False)
