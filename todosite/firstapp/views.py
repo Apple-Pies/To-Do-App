@@ -1,20 +1,16 @@
-from .forms import CreateUserForm
-from .forms import TaskForm
+from .forms import CreateUserForm, TaskForm
 from django.http import HttpResponse
 from django.shortcuts import redirect
 from django.shortcuts import render
-from django.contrib.auth import authenticate
-from django.contrib.auth import login
-from django.contrib.auth import logout
+from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import Group
 from .models import Task
 
 
 def RegisterUser(request):
 	if request.user.is_authenticated:
-		return redirect('/')
+		return redirect('home')
 	else:
 		form = CreateUserForm()
 		if request.method == 'POST':
@@ -24,7 +20,7 @@ def RegisterUser(request):
 				user = form.cleaned_data.get('username')
 				messages.warning(request, 'An Account was made for ' + user)
 
-				return redirect('/login')
+				return redirect('login')
 			
 
 		context = {'form':form}
@@ -32,7 +28,7 @@ def RegisterUser(request):
 
 def LoginUser(request):
 	if request.user.is_authenticated:
-		return redirect('/')
+		return redirect('home')
 	else:
 		if request.method == 'POST':
 			username = request.POST.get('username')
@@ -42,7 +38,7 @@ def LoginUser(request):
 
 			if user is not None:
 				login(request, user)
-				return redirect('/')
+				return redirect('home')
 			else:
 				messages.info(request, 'Your username or your password is incorrect')
 
