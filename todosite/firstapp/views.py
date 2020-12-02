@@ -1,7 +1,6 @@
 from .forms import CreateUserForm, TaskForm
 from django.http import HttpResponse
-from django.shortcuts import redirect
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -41,8 +40,8 @@ def LoginUser(request):
 				return redirect('home')
 			else:
 				messages.info(request, 'Your username or your password is incorrect')
-
-		return render(request, 'firstapp/login.html', {})
+        
+		return render(request, 'firstapp/login.html')
 
 def LogoutUser(request):
 	logout(request)
