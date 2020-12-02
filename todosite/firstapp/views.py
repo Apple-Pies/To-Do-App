@@ -14,7 +14,7 @@ from .models import Task
 
 def RegisterUser(request):
 	if request.user.is_authenticated:
-		return redirect('/home')
+		return redirect('/')
 	else:
 		form = CreateUserForm()
 		if request.method == 'POST':
@@ -32,7 +32,7 @@ def RegisterUser(request):
 
 def LoginUser(request):
 	if request.user.is_authenticated:
-		return redirect('/home')
+		return redirect('/')
 	else:
 		if request.method == 'POST':
 			username = request.POST.get('username')
@@ -42,7 +42,7 @@ def LoginUser(request):
 
 			if user is not None:
 				login(request, user)
-				return redirect('/home')
+				return redirect('/')
 			else:
 				messages.info(request, 'Your username or your password is incorrect')
 
