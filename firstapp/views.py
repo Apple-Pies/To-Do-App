@@ -61,7 +61,7 @@ def task(request):
         form = TaskForm(request.POST)
         if form.is_valid():
             form.save()
-        return redirect('task')
+        return redirect('/task')
 
     
     return render(request, 'firstapp/task.html', {'tasks':tasks, 'form':form})
@@ -75,7 +75,7 @@ def updateTask(request, pk):
         form = TaskForm(request.POST, instance=task)
         if form.is_valid():
             form.save()
-            return redirect('task')
+            return redirect('/task')
 
     return render(request, 'firstapp/update_task.html', {'form':form})
 
@@ -85,7 +85,7 @@ def deleteTask(request, pk):
 
     if request.method == 'POST':
         item.delete()
-        return redirect('task')
+        return redirect('/task')
 
     return render(request, 'firstapp/delete_task.html', {'item':item})
 
@@ -101,7 +101,7 @@ def delete_all(request):
 
     if request.method == 'POST':
         tasks.delete()
-        return redirect('task')
+        return redirect('/task')
 
 
     return render(request, 'firstapp/delete_all.html', {'tasks':tasks})
@@ -121,7 +121,7 @@ def Note(request, pk):
         form = TaskForm(request.POST, instance=item)
         if form.is_valid():
             form.save()
-            return redirect('task')
+            return redirect('/task')
 
     return render(request, 'firstapp/note.html', {'item':item, 'form':form})
 
