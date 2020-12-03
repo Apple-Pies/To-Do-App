@@ -4,7 +4,7 @@ from . import views
 app_name = 'firstapp'
 urlpatterns = [
         path('register/', views.RegisterUser, name="register"),
-        path('login/', views.LoginUser, name="login"),  
+        path('login/', views.LoginUser, name="login"),
         path('logout/', views.LogoutUser, name="logout"),
 
     path('', views.Home, name="home"),
