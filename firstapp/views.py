@@ -8,7 +8,7 @@ from .models import *
 from .forms import OrderForm, CreateUserForm
 
 
-def registerUser(request):
+def registerPage(request):
 	if request.user.is_authenticated:
 		return redirect('home')
 	else:
@@ -26,7 +26,7 @@ def registerUser(request):
 		context = {'form':form}
 		return render(request, 'firstapp/register.html', context)
 
-def loginUser(request):
+def loginPage(request):
 	if request.user.is_authenticated:
 		return redirect('home')
 	else:
