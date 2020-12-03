@@ -1,11 +1,11 @@
-from .forms import CreateUserForm, TaskForm
+from .forms import *
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from .models import Task
+from .models import *
 
 
 def RegisterUser(request):
@@ -42,9 +42,9 @@ def LoginUser(request):
 			else:
 				messages.info(request, 'Your username or your password is incorrect')
         
-		return render(request, 'firstapp/login.html')
+		return render(request, 'firstapp/login.html', {})
 
-def LogoutUser(request):
+def logoutUser(request):
 	logout(request)
 	return redirect('login')
 
