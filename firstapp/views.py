@@ -1,11 +1,11 @@
-from .forms import *
+from django.shortcuts import render, redirect 
 from django.http import HttpResponse
-from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .models import *
+from .forms import OrderForm, CreateUserForm
 
 
 def registerUser(request):
@@ -50,7 +50,7 @@ def logoutUser(request):
 
 @login_required(login_url='login')
 def home(request):
-    return render(request, 'firstapp/home.html')
+    return render(request, 'firstapp/home.html', {})
 
 @login_required(login_url='login')
 def task(request):
