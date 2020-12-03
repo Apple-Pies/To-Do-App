@@ -10,7 +10,7 @@ from .forms import *
 
 def registerPage(request):
 	if request.user.is_authenticated:
-		return redirect('home')
+		return redirect('/')
 	else:
 		form = CreateUserForm()
 		if request.method == 'POST':
@@ -20,7 +20,7 @@ def registerPage(request):
 				user = form.cleaned_data.get('username')
 				messages.warning(request, 'An Account was made for ' + user)
 
-				return redirect('login')
+				return redirect('/login')
 			
 
 		context = {'form':form}
@@ -28,7 +28,7 @@ def registerPage(request):
 
 def loginPage(request):
 	if request.user.is_authenticated:
-		return redirect('home')
+		return redirect('/')
 	else:
 		if request.method == 'POST':
 			username = request.POST.get('username')
@@ -38,7 +38,7 @@ def loginPage(request):
 
 			if user is not None:
 				login(request, user)
-				return redirect('home')
+				return redirect('/')
 			else:
 				messages.info(request, 'Your username or your password is incorrect')
         
@@ -46,7 +46,7 @@ def loginPage(request):
 
 def logoutUser(request):
 	logout(request)
-	return redirect('login')
+	return redirect('/login')
 
 @login_required(login_url='login')
 def home(request):
