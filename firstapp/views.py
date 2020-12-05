@@ -28,7 +28,7 @@ def registerPage(request):
 
 def loginPage(request):
 	if request.user.is_authenticated:
-		return redirect('firstapp:home')
+		return redirect('firstapp')
 	else:
 		if request.method == 'POST':
 			username = request.POST.get('username')
@@ -38,7 +38,7 @@ def loginPage(request):
 
 			if user is not None:
 				login(request, user)
-				return redirect('firstapp:home')
+				return redirect('firstapp')
 			else:
 				messages.info(request, 'Username OR password is incorrect')
 
