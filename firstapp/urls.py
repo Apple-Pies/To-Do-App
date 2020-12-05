@@ -7,7 +7,7 @@ urlpatterns = [
         path('login/', views.loginPage, name="login"),  
         path('logout/', views.logoutUser, name="logout"),
 
-    path('home/', views.home, name="home"),
+    path('', views.home, name="home"),
     path('task/', views.task, name="task"),
     path('update_task/<str:pk>/', views.updateTask, name="update_task"),
 
