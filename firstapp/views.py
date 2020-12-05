@@ -10,7 +10,7 @@ from .forms import *
 
 def registerPage(request):
 	if request.user.is_authenticated:
-		return redirect('home')
+		return redirect('firstapp:home')
 	else:
 		form = CreateUserForm()
 		if request.method == 'POST':
@@ -28,17 +28,17 @@ def registerPage(request):
 
 def loginPage(request):
 	if request.user.is_authenticated:
-		return redirect('home')
+		return redirect('firstapp:home')
 	else:
 		if request.method == 'POST':
 			username = request.POST.get('username')
-			password =request.POST.get('password')
+			password = request.POST.get('password')
 
 			user = authenticate(request, username=username, password=password)
 
 			if user is not None:
 				login(request, user)
-				return redirect('home')
+				return redirect('firstapp:home')
 			else:
 				messages.info(request, 'Username OR password is incorrect')
 
