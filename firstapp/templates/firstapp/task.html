@@ -39,7 +39,7 @@
 								<hr>
 								<br>
 								<button class="btn btn-lg btn-outline-info" type="submit">Create Task</button>
-								<a class="btn btn-lg btn-outline-danger" href="{% url 'delete_all' %}" type="submit">Delete All</a>
+								<a class="btn btn-lg btn-outline-danger" href="{% url 'firstapp:delete_all' %}" type="submit">Delete All</a>
 						</form>
 						<div>
 							{% for task in tasks %}
@@ -50,15 +50,15 @@
 										<s id="rof3"><h3 id="task">{{task}}</h3></s>
 										<br>
 										<hr>
-										<a class="btn btn-md btn-light" href="{% url 'update_task' task.id %}">Update</a>
-										<a class="btn btn-md btn-dark" href="{% url 'delete_task' task.id %}">Delete</a>
-										<a class="btn btn-md btn-primary" href="{% url 'note' task.id %}">View</a>
+										<a class="btn btn-md btn-light" href="{% url 'firstapp:update_task' task.id %}">Update</a>
+										<a class="btn btn-md btn-dark" href="{% url 'firstapp:delete_task' task.id %}">Delete</a>
+										<a class="btn btn-md btn-primary" href="{% url 'firstapp:note' task.id %}">View</a>
 									{% else %}
 										<h3 id="task">{{task}}</h3>
 										<br>
-										<a class="btn btn-md btn-light" href="{% url 'update_task' task.id %}">Update</a>
-										<a class="btn btn-md btn-dark" href="{% url 'delete_task' task.id %}">Delete</a>
-										<a class="btn btn-md btn-primary" href="{% url 'note' task.id %}">View</a>
+										<a class="btn btn-md btn-light" href="{% url 'firstapp:update_task' task.id %}">Update</a>
+										<a class="btn btn-md btn-dark" href="{% url 'firstapp:delete_task' task.id %}">Delete</a>
+										<a class="btn btn-md btn-primary" href="{% url 'firstapp:note' task.id %}">View</a>
 									{% endif %}
 								</div>
 							{% endfor %}
