@@ -58,7 +58,7 @@
                                 <form method="POST" action="">
                                     <h3 class="display-4">Type In a Username :</h3>
                                         {% csrf_token %}
-                                        <div class="input-group-reg">
+                                        <div class="input-group-reg form-control">
                                             {{form.username}}
                                         </div>
                                     </div>
@@ -66,7 +66,7 @@
                                     <div class="card-body p-3 mb-2 bg-white">
                                         <h3 class="display-4">Type In a Email :</h3>
                                             {% csrf_token %}
-                                            <div class="input-group-reg">
+                                            <div class="input-group-reg form-control">
                                                 {{form.email}}
                                             </div>
                                     </div>
@@ -74,7 +74,7 @@
                                     <div class="card-body p-3 mb-2 bg-white">
                                         <h3 class="display-4">Type In a Password :</h3>
                                             {% csrf_token %}
-                                            <div class="input-group-reg">
+                                            <div class="input-group-reg form-control">
                                                 {{form.password1}}
                                             </div>
                                     </div>
@@ -82,7 +82,7 @@
                                     <div class="card-body p-3 mb-2 bg-white">
                                         <h3 class="display-4">Re-Confirm Password :</h3>
                                             {% csrf_token %}
-                                            <div class="input-group-reg">
+                                            <div class="input-group-reg form-control">
                                                 {{form.password2}}
                                             </div>
                                     </div>
