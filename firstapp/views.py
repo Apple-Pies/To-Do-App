@@ -10,7 +10,7 @@ from .forms import *
 
 def registerPage(request):
 	if request.user.is_authenticated:
-		return redirect('/')
+		return redirect('home')
 	else:
 		form = CreateUserForm()
 		if request.method == 'POST':
@@ -20,7 +20,7 @@ def registerPage(request):
 				user = form.cleaned_data.get('username')
 				messages.warning(request, 'An Account was made for ' + user)
 
-				return redirect('/login')
+				return redirect('login')
 			
 
 		context = {'form':form}
@@ -28,7 +28,7 @@ def registerPage(request):
 
 def loginPage(request):
 	if request.user.is_authenticated:
-		return redirect('/')
+		return redirect('home')
 	else:
 		if request.method == 'POST':
 			username = request.POST.get('username')
@@ -38,19 +38,21 @@ def loginPage(request):
 
 			if user is not None:
 				login(request, user)
-				return redirect('/')
+				return redirect('home')
 			else:
 				messages.info(request, 'Your username or your password is incorrect')
         
-		return render(request, 'firstapp/login.html', {})
+        context = {}
+		return render(request, 'firstapp/login.html', context)
 
 def logoutUser(request):
 	logout(request)
-	return redirect('/login')
+	return redirect('login')
 
 @login_required(login_url='login')
 def home(request):
-    return render(request, 'firstapp/home.html', {})
+    context = {}
+    return render(request, 'firstapp/home.html', context)
 
 @login_required(login_url='login')
 def task(request):
@@ -63,8 +65,9 @@ def task(request):
             form.save()
         return redirect('/task')
 
-    
-    return render(request, 'firstapp/task.html', {'tasks':tasks, 'form':form})
+    context = {'tasks':tasks, 'form':form}
+
+    return render(request, 'firstapp/task.html', context)
 
 @login_required(login_url='login')
 def updateTask(request, pk):
@@ -77,7 +80,9 @@ def updateTask(request, pk):
             form.save()
             return redirect('/task')
 
-    return render(request, 'firstapp/update_task.html', {'form':form})
+    context = {'form':form}
+
+    return render(request, 'firstapp/update_task.html', context)
 
 @login_required(login_url='login')
 def deleteTask(request, pk):
@@ -87,13 +92,17 @@ def deleteTask(request, pk):
         item.delete()
         return redirect('/task')
 
-    return render(request, 'firstapp/delete_task.html', {'item':item})
+    context = {'item':item}
+
+    return render(request, 'firstapp/delete_task.html', context)
 
 @login_required(login_url='login')
 def status(request):
     tasks = Task.objects.all()
 
-    return render(request, 'firstapp/status.html', {'tasks':tasks})
+    context = {'tasks':tasks}
+
+    return render(request, 'firstapp/status.html', context)
 
 @login_required(login_url='login')
 def delete_all(request):
@@ -103,8 +112,9 @@ def delete_all(request):
         tasks.delete()
         return redirect('/task')
 
+    context = {'tasks':tasks}
 
-    return render(request, 'firstapp/delete_all.html', {'tasks':tasks})
+    return render(request, 'firstapp/delete_all.html', context)
 
 @login_required(login_url='login')
 def aboutUs(request):
@@ -123,12 +133,16 @@ def Note(request, pk):
             form.save()
             return redirect('/task')
 
-    return render(request, 'firstapp/note.html', {'item':item, 'form':form})
+    context = {'item':item, 'form':form}
+
+    return render(request, 'firstapp/note.html', context)
 
 @login_required(login_url='login')
 def priority(request):
     tasks = Task.objects.all()
 
-    return render(request, 'firstapp/prior.html', {'tasks':tasks})
+    context = {'tasks':tasks}
+
+    return render(request, 'firstapp/prior.html', context)
 
 
