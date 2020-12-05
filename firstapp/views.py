@@ -10,7 +10,7 @@ from .forms import *
 
 def registerPage(request):
 	if request.user.is_authenticated:
-		return redirect('firstapp:home')
+		return redirect('todosite:home')
 	else:
 		form = CreateUserForm()
 		if request.method == 'POST':
