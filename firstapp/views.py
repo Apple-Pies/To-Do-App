@@ -20,7 +20,7 @@ def registerPage(request):
 				user = form.cleaned_data.get('username')
 				messages.success(request, 'An Account has been made for ' + user)
 
-				return redirect('login')
+				return redirect('firstapp:login')
 			
 
 		context = {'form':form}
