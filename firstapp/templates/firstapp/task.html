@@ -35,14 +35,9 @@
 								{{form.priority}}
 								<div class="did"></div>
 								<button class="btn btn-lg btn-outline-info" type="submit">Create Task</button>
-								<div class="row">
-									<div class="row-md">
-										<div class="divider"></div>
-									</div>
-								</div>
 								<a class="btn btn-lg btn-outline-success" href="{% url 'firstapp:delete_all' %}" type="submit">Delete All</a>
-						</form>
-						<div>
+						</form> 
+					<div>
 							{% for task in tasks %}
 								<div class="item-row">
 									<hr>
