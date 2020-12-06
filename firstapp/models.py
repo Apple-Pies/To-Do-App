@@ -9,7 +9,7 @@ class Task(models.Model):
 			)
 			
 	name = models.CharField(max_length=200)
-	note = models.TextField(max_length=800)
+	note = models.TextField(max_length=200)
 	completion = models.BooleanField(default=False)
 	priority = models.CharField(max_length=200, null=True, choices=MyCHOICES)
 	Time_created = models.DateTimeField(auto_now_add=True)
