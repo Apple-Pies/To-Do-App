@@ -23,16 +23,20 @@
 								{% csrf_token %}
 								<div class="did"></div>
 								<h1 id="Footer">Type in a Title :</h1>
+								<hr>
 								<div class="did"></div>
 								{{form.name}}
 								<div class="did"></div>
 								<h1 id="Footer1">Type in a Note :</h1>
+								<hr>
 								<div class="did"></div>
 								{{form.note}}
+								<hr>
 								<div class="did"></div>
 								<h1 id="Footer2">Select a Rank :</h1>
 								<div class="did"></div>
 								{{form.priority}}
+								<hr>
 								<div class="did"></div>
 								<button class="btn btn-lg btn-outline-info" type="submit">Create Task</button>
 								<a class="btn btn-lg btn-outline-success" href="{% url 'firstapp:delete_all' %}" type="submit">Delete All</a>
