@@ -29,8 +29,9 @@
 								</div>
 							</div>
 						</div>
-						<div class="center-column">
-							<form class="form-group" action="" method="POST">
+						<div class="row">
+							<div class="row-md">
+								<form class="form-group" action="" method="POST">
 									{% csrf_token %}
 									<div class="did"></div>
 									<h1 id="Footer">Type in a Title :</h1>
@@ -49,8 +50,8 @@
 									<br>
 									<button class="btn btn-lg btn-outline-info" type="submit">Create Task</button>
 									<a class="btn btn-lg btn-outline-success" href="{% url 'firstapp:delete_all' %}" type="submit">Delete All</a>
-							</form> 
-							<div>
+								</form> 
+								<div></div>
 								{% for task in tasks %}
 									<div class="item-row">
 										<hr>
