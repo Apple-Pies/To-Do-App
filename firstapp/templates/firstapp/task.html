@@ -18,63 +18,51 @@
 					<h1 class="display-4" id="ngh">Your Tasks</h1>
 				</div>
 				<div class="card-body p-3 mb-2 bg-white">
-					<div class="col center">
-						<div class="row">
-							<div class="row-md">
-								<div class="card" style="width: 18rem; height: 20rem; margin-top: 40px;">
-									<img class="card-img-top" src="https://cdn.hipwallpaper.com/i/63/67/QDAZoU.jpg" alt="Card image cap">
-									<div class="card-body">
-									<h5 class="card-title">Create Tasks</h5>
-									<p class="card-text">Get closer to reaching your goals with specific tasks.</p>
-								</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="row-md">
-								<form class="form-group" action="" method="POST">
-									{% csrf_token %}
-									<div class="did"></div>
-									<h1 id="Footer">Type in a Title :</h1>
+					<div class="center-column">
+						<form class="form-group" action="" method="POST">
+								{% csrf_token %}
+								<div class="did"></div>
+								<h1 id="Footer">Type in a Title :</h1>
+								<hr>
+								{{form.name}}
+								<div class="did"></div>
+								<h1 id="Footer1">Type in a Note :</h1>
+								<hr>
+								{{form.note}}
+								<div class="did"></div>
+								<h1 id="Footer2">Select a Rank :</h1>
+								<hr>
+								{{form.priority}}
+								<hr>
+								<div class="did"></div>
+								<br>
+								<button class="btn btn-lg btn-outline-info" type="submit">Create Task</button>
+								<a class="btn btn-lg btn-outline-success" href="{% url 'firstapp:delete_all' %}" type="submit">Delete All</a>
+						</form> 
+					<div>
+							{% for task in tasks %}
+								<div class="item-row">
 									<hr>
-									{{form.name}}
-									<div class="did"></div>
-									<h1 id="Footer1">Type in a Note :</h1>
-									<hr>
-									{{form.note}}
-									<div class="did"></div>
-									<h1 id="Footer2">Select a Rank :</h1>
-									<hr>
-									{{form.priority}}
-									<hr>
-									<div class="did"></div>
-									<br>
-									<button class="btn btn-lg btn-outline-info" type="submit">Create Task</button>
-									<a class="btn btn-lg btn-outline-success" href="{% url 'firstapp:delete_all' %}" type="submit">Delete All</a>
-								</form> 
-								<div></div>
-								{% for task in tasks %}
-									<div class="item-row">
+					
+									{% if task.completion == True %}
+										<s id="rof3"><h3 id="task">{{task}}</h3></s>
+										<br>
 										<hr>
-						
-										{% if task.completion == True %}
-											<s id="rof3"><h3 id="task">{{task}}</h3></s>
-											<br>
-											<hr>
-											<a class="btn btn-md btn-light" href="{% url 'firstapp:update_task' task.id %}">Update</a>
-											<a class="btn btn-md btn-dark" href="{% url 'firstapp:delete_task' task.id %}">Delete</a>
-											<a class="btn btn-md btn-primary" href="{% url 'firstapp:note' task.id %}">View</a>
-										{% else %}
-											<h3 id="task">{{task}}</h3>
-											<br>
-											<a class="btn btn-md btn-light" href="{% url 'firstapp:update_task' task.id %}">Update</a>
-											<a class="btn btn-md btn-dark" href="{% url 'firstapp:delete_task' task.id %}">Delete</a>
-											<a class="btn btn-md btn-primary" href="{% url 'firstapp:note' task.id %}">View</a>
-										{% endif %}
-									</div>
-								{% endfor %}
-							</div>
+										<a class="btn btn-md btn-light" href="{% url 'firstapp:update_task' task.id %}">Update</a>
+										<a class="btn btn-md btn-dark" href="{% url 'firstapp:delete_task' task.id %}">Delete</a>
+										<a class="btn btn-md btn-primary" href="{% url 'firstapp:note' task.id %}">View</a>
+									{% else %}
+										<h3 id="task">{{task}}</h3>
+										<br>
+										<a class="btn btn-md btn-light" href="{% url 'firstapp:update_task' task.id %}">Update</a>
+										<a class="btn btn-md btn-dark" href="{% url 'firstapp:delete_task' task.id %}">Delete</a>
+										<a class="btn btn-md btn-primary" href="{% url 'firstapp:note' task.id %}">View</a>
+									{% endif %}
+								</div>
+							{% endfor %}
 						</div>
-					</div>		
+					</div>
+					<div class="divider"></div>
 				<div class="card-footer p-3 mb-2 bg-white">
 					<br>
 					<div class="divider"></div>
