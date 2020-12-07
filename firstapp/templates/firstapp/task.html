@@ -29,49 +29,49 @@
 								</div>
 							</div>
 						</div>
-					</div>
-					<div class="center-column">
-						<form class="form-group" action="" method="POST">
-								{% csrf_token %}
-								<div class="did"></div>
-								<h1 id="Footer">Type in a Title :</h1>
-								<hr>
-								{{form.name}}
-								<div class="did"></div>
-								<h1 id="Footer1">Type in a Note :</h1>
-								<hr>
-								{{form.note}}
-								<div class="did"></div>
-								<h1 id="Footer2">Select a Rank :</h1>
-								<hr>
-								{{form.priority}}
-								<hr>
-								<div class="did"></div>
-								<br>
-								<button class="btn btn-lg btn-outline-info" type="submit">Create Task</button>
-								<a class="btn btn-lg btn-outline-success" href="{% url 'firstapp:delete_all' %}" type="submit">Delete All</a>
-						</form> 
-					<div>
-							{% for task in tasks %}
-								<div class="item-row">
+						<div class="center-column">
+							<form class="form-group" action="" method="POST">
+									{% csrf_token %}
+									<div class="did"></div>
+									<h1 id="Footer">Type in a Title :</h1>
 									<hr>
-					
-									{% if task.completion == True %}
-										<s id="rof3"><h3 id="task">{{task}}</h3></s>
-										<br>
+									{{form.name}}
+									<div class="did"></div>
+									<h1 id="Footer1">Type in a Note :</h1>
+									<hr>
+									{{form.note}}
+									<div class="did"></div>
+									<h1 id="Footer2">Select a Rank :</h1>
+									<hr>
+									{{form.priority}}
+									<hr>
+									<div class="did"></div>
+									<br>
+									<button class="btn btn-lg btn-outline-info" type="submit">Create Task</button>
+									<a class="btn btn-lg btn-outline-success" href="{% url 'firstapp:delete_all' %}" type="submit">Delete All</a>
+							</form> 
+							<div>
+								{% for task in tasks %}
+									<div class="item-row">
 										<hr>
-										<a class="btn btn-md btn-light" href="{% url 'firstapp:update_task' task.id %}">Update</a>
-										<a class="btn btn-md btn-dark" href="{% url 'firstapp:delete_task' task.id %}">Delete</a>
-										<a class="btn btn-md btn-primary" href="{% url 'firstapp:note' task.id %}">View</a>
-									{% else %}
-										<h3 id="task">{{task}}</h3>
-										<br>
-										<a class="btn btn-md btn-light" href="{% url 'firstapp:update_task' task.id %}">Update</a>
-										<a class="btn btn-md btn-dark" href="{% url 'firstapp:delete_task' task.id %}">Delete</a>
-										<a class="btn btn-md btn-primary" href="{% url 'firstapp:note' task.id %}">View</a>
-									{% endif %}
-								</div>
-							{% endfor %}
+						
+										{% if task.completion == True %}
+											<s id="rof3"><h3 id="task">{{task}}</h3></s>
+											<br>
+											<hr>
+											<a class="btn btn-md btn-light" href="{% url 'firstapp:update_task' task.id %}">Update</a>
+											<a class="btn btn-md btn-dark" href="{% url 'firstapp:delete_task' task.id %}">Delete</a>
+											<a class="btn btn-md btn-primary" href="{% url 'firstapp:note' task.id %}">View</a>
+										{% else %}
+											<h3 id="task">{{task}}</h3>
+											<br>
+											<a class="btn btn-md btn-light" href="{% url 'firstapp:update_task' task.id %}">Update</a>
+											<a class="btn btn-md btn-dark" href="{% url 'firstapp:delete_task' task.id %}">Delete</a>
+											<a class="btn btn-md btn-primary" href="{% url 'firstapp:note' task.id %}">View</a>
+										{% endif %}
+									</div>
+								{% endfor %}
+							</div>
 						</div>
 					</div>		
 				<div class="card-footer p-3 mb-2 bg-white">
