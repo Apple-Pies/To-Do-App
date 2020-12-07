@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class Task(models.Model):
 
@@ -8,7 +9,7 @@ class Task(models.Model):
 			('Mandatory', '🌟 Mandatory'),
 			)
 			
-	task_id = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+	task_id = models.ForeignKey(User)
 	name = models.CharField(max_length=200)
 	note = models.TextField(max_length=800)
 	completion = models.BooleanField(default=False)
