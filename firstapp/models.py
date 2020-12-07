@@ -8,6 +8,7 @@ class Task(models.Model):
 			('Mandatory', '🌟 Mandatory'),
 			)
 			
+	task_id = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 	name = models.CharField(max_length=200)
 	note = models.TextField(max_length=800)
 	completion = models.BooleanField(default=False)
