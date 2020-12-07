@@ -9,7 +9,7 @@ class Task(models.Model):
 			('Mandatory', '🌟 Mandatory'),
 			)
 			
-	task_id = models.ForeignKey(User)
+	user = models.ForeignKey(User)
 	name = models.CharField(max_length=200)
 	note = models.TextField(max_length=800)
 	completion = models.BooleanField(default=False)
