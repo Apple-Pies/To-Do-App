@@ -56,7 +56,8 @@ def home(request):
 
 @login_required(login_url='firstapp:login')
 def task(request):
-    tasks = Task.objects.all()
+    user = request.user
+    tasks = Task.objects.filter(user=user)
     form = TaskForm()
 
     if request.method == 'POST':
@@ -98,7 +99,8 @@ def deleteTask(request, pk):
 
 @login_required(login_url='firstapp:login')
 def status(request):
-    tasks = Task.objects.all()
+    user = request.user
+    tasks = Task.objects.filter(user=user)
 
     context = {'tasks':tasks}
 
@@ -106,7 +108,8 @@ def status(request):
 
 @login_required(login_url='firstapp:login')
 def delete_all(request):
-    tasks = Task.objects.all()
+    user = request.user
+    tasks = Task.objects.filter(user=user)
 
     if request.method == 'POST':
         tasks.delete()
@@ -139,7 +142,8 @@ def Note(request, pk):
 
 @login_required(login_url='firstapp:login')
 def priority(request):
-    tasks = Task.objects.all()
+    user = request.user
+    tasks = Task.objects.filter(user=user)
 
     context = {'tasks':tasks}
 
