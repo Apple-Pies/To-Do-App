@@ -8,13 +8,13 @@ class Task(models.Model):
 			('Somewhat Important', '⭐ Somewhat Important'),
 			('Mandatory', '🌟 Mandatory'),
 			)
-			
+	
+	this_id = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 	name = models.CharField(max_length=200)
 	note = models.TextField(max_length=800)
 	completion = models.BooleanField(default=False)
 	priority = models.CharField(max_length=200, null=True, choices=MyCHOICES)
 	Time_created = models.DateTimeField(auto_now_add=True)
-	user = models.ForeignKey(User, default=1, on_delete=models.CASCADE)
 
 	def __str__(self):
 		return self.name
