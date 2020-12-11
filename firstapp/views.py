@@ -98,7 +98,7 @@ def deleteTask(request, pk):
 
 @login_required(login_url='firstapp:login')
 def status(request):
-    user = request.user
+    
     tasks = Task.objects.filter(this_id=request.user)
 
     context = {'tasks':tasks}
@@ -107,7 +107,6 @@ def status(request):
 
 @login_required(login_url='firstapp:login')
 def delete_all(request):
-    user = request.user
     tasks = Task.objects.filter(this_id=request.user)
 
     if request.method == 'POST':
@@ -141,7 +140,6 @@ def Note(request, pk):
 
 @login_required(login_url='firstapp:login')
 def priority(request):
-    user = request.user
     tasks = Task.objects.filter(this_id=request.user)
 
     context = {'tasks':tasks}
