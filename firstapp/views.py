@@ -58,6 +58,7 @@ def home(request):
 def task(request):
     tasks = Task.objects.all()
     form = TaskForm()
+    amount = Task.objects.count()
 
     if request.method == 'POST':
         form = TaskForm(request.POST)
@@ -65,7 +66,7 @@ def task(request):
             form.save()
         return redirect('firstapp:task')
 
-    context = {'tasks':tasks, 'form':form}
+    context = {'tasks':tasks, 'form':form, 'amount':amount}
 
     return render(request, 'firstapp/task.html', context)
 
