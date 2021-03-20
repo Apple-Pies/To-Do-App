@@ -9,5 +9,5 @@
 # Description
 This was my first ever Python project done in Django.
 I Really hope that you would like viewing this site, and when you run the "python manage.py runserver" command, that you would enjoy all that this web-app has to offer.
-BTW: I'm a 13 year old programmer, who likes sharing projects like these, on platforms, such as Github.
+
 
